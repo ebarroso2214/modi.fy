@@ -12,8 +12,22 @@ router.get('/', async(req,res)=>{
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try{
+        const foundUser = await User.findById(req.params.id)
+        res.status(200).json({foundUser})
+    }
+    catch(err){
+        res.status(400).json({error:err})
+    }
+})
+
+
+
 router.get('*', (req,res) => {
     res.status(404).json({error: "Not found"})
 })
+
+
 
 module.exports = router
