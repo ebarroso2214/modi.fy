@@ -2,6 +2,7 @@ require('dotenv').config()
 const router = require('express').Router()
 const {User} = require('../models')
 
+//Find all users
 router.get('/', async(req,res)=>{
     try{
         const foundUsers = await User.find()
@@ -12,7 +13,8 @@ router.get('/', async(req,res)=>{
     }
 })
 
-router.get('/:id', async (req, res) => {
+//Find a single user
+router.get('/:id', async(req, res) => {
     try{
         const foundUser = await User.findById(req.params.id)
         res.status(200).json({foundUser})
