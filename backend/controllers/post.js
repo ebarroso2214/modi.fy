@@ -17,6 +17,7 @@ router.get('/', async(req,res) => {
 router.get('/:id', async(req, res) => {
     try{
         const foundPost = await Post.findById(req.params.id)
+        .populate('author')
         res.status(200).json({post: foundPost})
     }
     catch(err){
