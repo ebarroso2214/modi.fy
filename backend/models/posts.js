@@ -9,11 +9,11 @@ const postSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        dateCreated: {
-            type: Date,
-            default: Date.now
-        },
         required: true
+    },
+    dateCreated: {
+        type: Date,
+        default: Date.now
     },
     pic: {
         type: String
