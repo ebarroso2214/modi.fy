@@ -7,7 +7,7 @@ function NavigationBar() {
   return (
     <Navbar bg= 'dark' data-bs-theme= 'dark'expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Modi.fy</Navbar.Brand>
+        <Navbar.Brand href="/">Modi.fy</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -26,7 +26,7 @@ function NavigationBar() {
             </NavDropdown>
           </Nav>
           <Navbar.Text>
-            Signed in as: <a href="#login">User</a>
+            Signed in as: <a href="/profile">User</a>
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>
