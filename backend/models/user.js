@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: true
     },
+
+    posts: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    },
     bio: String,
     pic: String
 });
