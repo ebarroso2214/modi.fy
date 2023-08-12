@@ -6,6 +6,9 @@ const {Post, User} = require('../models')
 router.get('/', async(req,res) => {
     try{
         const foundPosts = await Post.find()
+        .populate({path:'author', select:['username', 'pic']})
+        // const foundAuthors = await User.find() // This refers to the User schema
+
         res.status(200).json({posts: foundPosts})
     }
     catch(err){

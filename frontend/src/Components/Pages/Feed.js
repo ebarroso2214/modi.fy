@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/esm/Container"
 import PostComponent from "../PostComponent"
+import Row from 'react-bootstrap/Row'
 
 function Feed({posts}){
     const postList = posts.map(post =>{
@@ -9,7 +10,11 @@ function Feed({posts}){
     })
 
     return(
-        <h1>Feed Page</h1>
+        <Container>
+            <h1 className="display-4 mb-3" >Feed</h1>
+            <Row className="justify-content-center g-4 mx-2 mb-5 p-0">{postList}</Row>
+        </Container>
+        
     )
 }
 
