@@ -10,6 +10,7 @@ import Register from './Components/Pages/Register';
 import Profile from './Components/Pages/Profile';
 import Feed from './Components/Pages/Feed';
 import Create from './Components/Pages/createPost';
+import Post from './Components/Pages/Post'
 
 
 
@@ -23,8 +24,8 @@ function App() {
     async function getPosts(){
       const response = await fetch("http://localhost:3001/posts")
       const data = await response.json()
-      console.log(data.posts)
-      console.log(data.users)
+      // console.log(data.posts)
+      // console.log(data.users)
       setPosts(data.posts)
       setUsers(data.users)
       
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/feed" element={<Feed posts={posts}/>}/>
+          <Route path= "/posts/:id" element={<Post/>}/>
           <Route path= "/post" element={<Create addPost={addPost}/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
