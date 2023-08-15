@@ -4,7 +4,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
 
+
+//Note to self, add CORS.
+
 //Middleware
+
+
 app.use(bodyParser.urlencoded({
     extended: true
 }))
