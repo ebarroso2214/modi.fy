@@ -75,7 +75,7 @@ router.post('/login', async(req,res) => {
         if(!user) res.status(401).json({error: "Login not successful - user not found"})
 
         //Validate password
-        const validPassword = await bcrypt.compare(password, author.password)
+        const validPassword = await bcrypt.compare(password, user.password)
 
         if(!validPassword){
             res.status(401).json({error: "Login not successful - invalid password"})
