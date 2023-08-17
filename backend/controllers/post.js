@@ -1,6 +1,7 @@
 require('dotenv').config()
 const router = require('express').Router()
 const {Post, User} = require('../models')
+const {validateToken} = require('../JWT')
 
 //Get all posts
 router.get('/', async(req,res) => {
@@ -30,7 +31,7 @@ router.get('/:id', async(req, res) => {
 })
 
 //Create a post
-router.post('/', async(req,res) => {
+router.post('/', validateToken, async(req,res) => {
     try{
         const createdPost = await Post.create(req.body)
             res.status(200).json(createdPost)
@@ -42,7 +43,7 @@ router.post('/', async(req,res) => {
 })
 
 //Update post
-router.put('/:id', async(req,res) => {
+router.put('/:id', validateToken, async(req,res) => {
     try{
         const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body)
         res.status(200).json({message: "Updated Post"})
@@ -53,7 +54,7 @@ router.put('/:id', async(req,res) => {
 })
 
 //Delete post
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',validateToken, async (req, res) => {
     try{
         const deletedPost = await Post.findOneAndDelete(req.params.id)
         res.status(200).json({message: "Post Deleted" })

@@ -3,17 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
+const cors = require('cors')
 
 
 //Note to self, add CORS.
 
 //Middleware
-
+app.use(cors())
 
 app.use(bodyParser.urlencoded({
     extended: true
-}))
-
+}));
 app.use(bodyParser.json());
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");

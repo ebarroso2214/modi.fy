@@ -13,32 +13,43 @@ function Register(){
     const {setUser} = useContext(AuthorUserContext)
     const navigate = useNavigate()
 
+
     const handleChange = (e) => {
         const { id, value } = e.target
         setNewUser({
         ...newUser,
         [id]: value
+        
         })
+
+        console.log(newUser)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+ 
         const response = await fetch('http://localhost:3001/users', {
-        method: "post",
+        method: "POST",
         headers: {
+            'Accept':'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(newUser)
         })
+
+        console.log(response)
+
         const data = await response.json()
+        console.log(`data is ${data}`)
         if(data.user) {
+            console.log(`test`)
             localStorage.setItem("token", data.token)
-            localStorage.setItem("author", data.user)
+            localStorage.setItem("user", data.user)
             setUser(data.user)
             setAlert({variant: 'success', message: `${data.user.username} account created!`})
             setOpen(true)
             setTimeout(() => navigate(`/feed`), 1500) //change back to /users/profile, this is for testing
+            
         }
         if(data.error) {
             setAlert({variant: 'danger', message: data.error})
@@ -53,22 +64,18 @@ function Register(){
                     <Form.Label>Username</Form.Label>
                     <Form.Control type='text' placeholder='Enter a username..' onChange={handleChange}/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type='text' placeholder='Enter your email..'/>
-                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Enter your password'/>
+                    <Form.Control type='password' placeholder='Enter your password' onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="confirmPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type='password' placeholder='Confirm password'/>
+                    <Form.Control type='password' placeholder='Confirm password' onChange={handleChange}/>
                 </Form.Group>
                 
-                <SubmitButton variant='primary' type='submit' end = '200px' start='110px'>Register</SubmitButton>
+                <SubmitButton variant='primary' type='submit' >Register</SubmitButton>
                 
 
             </Form>

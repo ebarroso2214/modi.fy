@@ -11,6 +11,8 @@ import Profile from './Components/Pages/Profile';
 import Feed from './Components/Pages/Feed';
 import Create from './Components/Pages/createPost';
 import Post from './Components/Pages/Post'
+import { AuthorUserContext } from './Components/Context/AuthorUserContext';
+import EditPost from './Components/Pages/EditPost';
 
 
 
@@ -18,14 +20,19 @@ function App() {
   const [user, setUser] = useState({})
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
+
+
+ //Get user
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser !== null) setUser(storedUser);
+  }, []);
   
   //Fetching all posts
   useEffect(()=>{
     async function getPosts(){
-      const response = await fetch("http://localhost:3001/posts")
+      const response = await fetch('http://localhost:3001/posts')
       const data = await response.json()
-      // console.log(data.posts)
-      // console.log(data.users)
       setPosts(data.posts)
       setUsers(data.users)
       
@@ -33,24 +40,58 @@ function App() {
     getPosts();
   }, []);
   
-  const addPost = async (newPost) =>  {
+ 
 
+
+  const addPost = async (newPost) =>  {
+    const response = await fetch('http://localhost:3001/posts',{
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify(newPost)
+    });
+
+    const data = await response.json()
+    setPosts([data, ...posts]);
+    console.log(data)
+    console.log(data._id)
+    return data._id
   }
+
+  const deletePost = async (id) => {
+    const response = await fetch(`http://localhost:3001/posts/${id}`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.getItem('token'),
+      },
+    });
+    const data = await response.json();
+    if (data.message) {
+      setPosts(posts.filter((post) => post._id !== id));
+    }
+  };
+
  
 
   return (
     <div className="App">
       <Router>
-        <NavigationBar/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/feed" element={<Feed posts={posts}/>}/>
-          <Route path= "/posts/:id" element={<Post/>}/>
-          <Route path= "/post" element={<Create addPost={addPost}/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-        </Routes>
+        <AuthorUserContext.Provider value={{user, setUser}}>
+          <NavigationBar/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/feed" element={<Feed posts={posts}/>}/>
+            <Route path= "/posts/:id" element={<Post user={user._id} deletePost={deletePost}/>}/>
+            <Route path="/posts/:id/edit" element = {<EditPost />}/>
+            <Route path= "/post" element={<Create addPost={addPost}/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+          </Routes>
+        </AuthorUserContext.Provider>
       </Router>
       
       

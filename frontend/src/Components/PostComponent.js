@@ -18,7 +18,7 @@ function PostComponent ( {post}){
         <Container>
             <br></br>
             <Row className="d-flex my-0 p-0">
-                <Col xs={2}style={feedStyling1}>Post by: {post.author.username}</Col>
+                <Col xs={2}style={feedStyling1}>Post by: {post.author.username} </Col>
                 <Col xs={8}>{post.title}</Col>
                 
             </Row>
