@@ -52,7 +52,7 @@ router.post('/', async(req, res) => {
         const id = createdUser._id.valueOf()
         const token = createToken(id)
         res.status(200).json({token: token, user: {
-            _id: createdUser.id_,
+            _id: createdUser._id,
             username: createdUser.username
         }})
     }

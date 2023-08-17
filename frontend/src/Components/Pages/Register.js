@@ -1,5 +1,10 @@
-import Container from "react-bootstrap/esm/Container"
-import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+import Fade from 'react-bootstrap/Fade';
+import { MdPlayArrow } from "react-icons/md";
 import {useState, useEffect, useContext} from 'react'
 import { useNavigate } from "react-router-dom"
 import { AuthorUserContext } from "../Context/AuthorUserContext"
@@ -22,7 +27,6 @@ function Register(){
         
         })
 
-        console.log(newUser)
     }
 
     const handleSubmit = async (e) => {
@@ -36,15 +40,10 @@ function Register(){
         },
         body: JSON.stringify(newUser)
         })
-
-        console.log(response)
-
         const data = await response.json()
-        console.log(`data is ${data}`)
         if(data.user) {
-            console.log(`test`)
-            localStorage.setItem("token", data.token)
-            localStorage.setItem("user", data.user)
+            localStorage.setItem("token", JSON.stringify(data.token))
+            localStorage.setItem("user", JSON.stringify(data.user))
             setUser(data.user)
             setAlert({variant: 'success', message: `${data.user.username} account created!`})
             setOpen(true)
@@ -76,7 +75,11 @@ function Register(){
                 </Form.Group>
                 
                 <SubmitButton variant='primary' type='submit' >Register</SubmitButton>
-                
+                <Fade in={open} className='mt-3'>
+                            <div>
+                                <Alert variant={alert.variant} onClose={() => setAlert({})}>{alert.message}</Alert>
+                            </div>
+                </Fade>
 
             </Form>
         </Container>

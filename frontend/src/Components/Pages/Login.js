@@ -39,7 +39,7 @@ function Login(){
             localStorage.setItem("user", JSON.stringify(rest))
             setAlert({variant: 'success', message: `${data.user.username} is signing in!`})
             setOpen(true)
-            setTimeout(() => navigate('/'), 800)
+            setTimeout(() => navigate('/feed'), 800)
         }
         if(data.error){
             setAlert({variant: 'danger', message: data.error})
