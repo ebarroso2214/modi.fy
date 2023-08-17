@@ -22,7 +22,7 @@ function App() {
   const [users, setUsers] = useState([])
 
 
- //Get user
+//  Get user
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser !== null) setUser(storedUser);
@@ -89,7 +89,7 @@ function App() {
             <Route path= "/post" element={<Create addPost={addPost}/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/users/profile" element={<Profile />}/>
           </Routes>
         </AuthorUserContext.Provider>
       </Router>
