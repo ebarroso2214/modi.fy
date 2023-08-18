@@ -2,7 +2,7 @@
 
 Welcome to my MERN Stack blog/social media site, this web application is catered towards car enthusiasts like myself. The design of this web application is to allow others to showcase their car builds. 
 ## What is it?
-You may wonder what this application does? This application is very straightforward and easy to use. The main goal of this application is for the car enthusiast community to be able to share their project builds and what the parts the used were, the cost of each part / modification, and the grand total of everything. This would be used by to show off their build with a description like how some social media platforms do. However, the big difference between this and other social media applications is the ability to add a list of items and their price with the grand total. This helps other enthusiasts gain inspiration for their builds and gauge what they would be spending roughly.
+You may be wondering what this application does. This application is very straightforward and easy to use. The main goal of this application is for the car enthusiast community to be able to share their project builds and what the parts the used were, the cost of each part / modification, and the grand total of everything. This would be used by to show off their build with a description like how some social media platforms do. However, the big difference between this and other social media applications is the ability to add a list of items and their price with the grand total. This helps other enthusiasts gain inspiration for their builds and gauge what they would be spending roughly.
 
 ## Features
 The features this application includes is the ability to post, login, and register.
