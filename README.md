@@ -7,7 +7,7 @@ You may wonder what this application does? This application is very straightforw
 ## Features
 The features this application includes is the ability to post, login, and register.
 
-## Tools use
+## Tools used
 The tools used to make this application consists of JWT(jsonwebtoken) for authentication / authorization, bcrypt for hashing passwords and comparing them, React for the frontend, Mongoose / MongoDB for the backend and express + node. 
 
 # API
