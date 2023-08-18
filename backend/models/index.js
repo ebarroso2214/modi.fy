@@ -13,4 +13,5 @@ mongoose.connect(process.env.MONGO_URI, {
 
 module.exports.User = require('./user.js');
 module.exports.Post = require('./posts.js');
+module.exports.Item = require('./itemList.js')
 
