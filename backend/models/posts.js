@@ -1,6 +1,16 @@
 //Post Schema
 const mongoose = require ('mongoose');
 
+const itemSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+  });
 
 const postSchema = new mongoose.Schema({
     author: {
@@ -23,12 +33,7 @@ const postSchema = new mongoose.Schema({
     pic: {
         type: String
     },
-    itemsList: {
-        item: {type:String},
-        amount: {type:Number},
-    }
-
-
+    items: [itemSchema]
 });
 
 module.exports = mongoose.model('Post', postSchema);

@@ -13,37 +13,67 @@ function Post(){
     const {author} = useContext(AuthorUserContext)
     const [post, setPost] = useState({})
     const navigate = useNavigate()
+    const [grandTotal, setGrandTotal] = useState(0);
 
-    useEffect(()=> {
+
+    useEffect(() => {
         async function getPost() {
-            const response = await fetch(`http://localhost:3001/posts/${id}`)
-            
+          try {
+            const response = await fetch(`http://localhost:3001/posts/${id}`);
             const data = await response.json();
+            setPost(data.post);
 
-            setPost(data.post)
-            // console.log(data)
+            const total = data.post.items.reduce((accumulator, item) => {
+                return accumulator + item.price;
+              }, 0);
+              setGrandTotal(total);
+          } catch (error) {
+            console.error('Error fetching post:', error);
+          }
         }
-
-        getPost()
-    }, [id])
+    
+        getPost();
+      }, [id]);
 
     console.log(post)
 
-    return(
+    const itemListStyle = {
+
+    }
+
+    return (
         <Container>
-            
-            <Row className="justify-content-center g-4 mx-5 mb-2 p-2">
-            <Link to='/feed'><BackButton/></Link>
-            </Row>
-            <Row className="justify-content-center g-4 mx-2 mb-5 p-0">
-                <h1>{post.title}</h1>
-                <img src={post.pic} alt='car'/>
-                <h5>{post.content}</h5>
-            </Row>
+          <Row className="justify-content-center g-4 mx-5 mb-2 p-2">
+            <Link to="/feed">
+              <BackButton />
+            </Link>
+          </Row>
+          <Row className="justify-content-center g-4 mx-2 mb-5 p-0">
+            <h1>{post.title}</h1>
+            <img src={post.pic} alt="car" />
+            <h5>{post.content}</h5>
+    
+            {/* Add a conditional check before mapping over items */}
+            {post.items && post.items.length > 0 ? (
+                <div>
+                    <ul>
+                        {post.items.map((item, index) => (
+                        <li key={index}>
+                            <strong>{item.name}</strong> - ${item.price.toFixed(2)}
+                        </li>
+                        ))}
+                    </ul>
+                    <p>Grand Total: ${grandTotal.toFixed(2)}</p>
+                </div>
+              
+            ) : (
+              <p>No items available.</p>
+            )}
+          </Row>
         </Container>
-        
-    )
+      );
 }
+        
 
 
 export default Post

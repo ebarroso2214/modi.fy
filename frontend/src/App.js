@@ -9,7 +9,7 @@ import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
 import Profile from './Components/Pages/Profile';
 import Feed from './Components/Pages/Feed';
-import Create from './Components/Pages/createPost';
+import CreatePost from './Components/Pages/createPost';
 import Post from './Components/Pages/Post'
 import { AuthorUserContext } from './Components/Context/AuthorUserContext';
 import EditPost from './Components/Pages/EditPost';
@@ -85,8 +85,8 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/feed" element={<Feed posts={posts}/>}/>
             <Route path= "/posts/:id" element={<Post user={user._id} deletePost={deletePost}/>}/>
-            <Route path="/posts/:id/edit" element = {<EditPost />}/>
-            <Route path= "/post" element={<Create addPost={addPost}/>}/>
+            {/* <Route path="/posts/:id/edit" element = {<EditPost />}/> */}
+            <Route path= "/post" element={<CreatePost addPost={addPost}/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/users/profile" element={<Profile />}/>

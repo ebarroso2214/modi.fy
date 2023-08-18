@@ -24,6 +24,7 @@ function PostComponent ( {post}){
             </Row>
             <Link to={`/posts/${post._id}`}><img style ={imageStyling} src={post.pic} alt="car"/></Link>
             
+
         </Container>
         
     )
