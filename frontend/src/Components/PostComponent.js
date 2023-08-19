@@ -19,7 +19,8 @@ function PostComponent ( {post}){
     const cardStyling = {
         padding:'10px',
         width:'50%',
-        margin:'auto'
+        margin:'auto',
+        boxShadow: '10px 10px 8px 2px #888888'
     }
     
     return(

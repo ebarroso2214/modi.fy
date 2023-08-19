@@ -42,7 +42,7 @@ function NavigationBar() {
           </Nav>
           {user._id ? <Nav>
             <div>
-              <Nav.Link as={NavLink}to='/post'>Post</Nav.Link>
+              <Nav.Link style={{color:'white'}} as={NavLink}to='/post'>Post</Nav.Link>
               <Button className='me-3' as = {Link} to="./users/profile">Hello {user.username}</Button>
               <Button onClick={logout}>Logout <MdLogout className="mb-1" size={18} /></Button>
             </div>
