@@ -44,7 +44,7 @@ function App() {
 
 
   const addPost = async (newPost) =>  {
-    const response = await fetch('http://https://modifyi.onrender.com/posts',{
+    const response = await fetch('https://modifyi.onrender.com/posts',{
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
