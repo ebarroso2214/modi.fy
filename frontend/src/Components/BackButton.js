@@ -4,7 +4,6 @@ function BackButton(){
 
 const buttonStyle = {
     width:'10em',
-    marginRight:'80%'
 
 }
     return(

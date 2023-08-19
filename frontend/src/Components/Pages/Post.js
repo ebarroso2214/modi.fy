@@ -7,6 +7,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { AuthorUserContext } from '../Context/AuthorUserContext'
 import BackButton from '../BackButton'
+import Card from 'react-bootstrap/Card'
+import styles from '../../CSS/Fonts.module.css'
 
 function Post(){
     const {id} = useParams()
@@ -14,7 +16,7 @@ function Post(){
     const [post, setPost] = useState({})
     const navigate = useNavigate()
     const [grandTotal, setGrandTotal] = useState(0);
-
+    const formattedDate = new Date(post.dateCreated).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric' })
 
     useEffect(() => {
         async function getPost() {
@@ -38,25 +40,37 @@ function Post(){
     console.log(post)
 
     const itemListStyle = {
-
+      listStyleType: 'none'
     }
 
+    const imageStyling = {
+      width: '50%',
+      // aspectRatio: '16/9',
+      borderRadius: '15px'
+  }
+
     return (
-        <Container>
-          <Row className="justify-content-center g-4 mx-5 mb-2 p-2">
+        <Container className='mb-5'>
+          <div style={{position:'relative'}}>
             <Link to="/feed">
               <BackButton />
             </Link>
-          </Row>
-          <Row className="justify-content-center g-4 mx-2 mb-5 p-0">
-            <h1>{post.title}</h1>
-            <img src={post.pic} alt="car" />
-            <h5>{post.content}</h5>
+          </div>
+          
+
+            <h1 className='title'>{post.title}</h1>
+            <span>
+              <h6 style={{fontFamily:'Georgia'}}>Posted:{formattedDate}</h6> 
+              {/* <h6 style={{fontFamily:'Georgia'}}>Written by: {post.author.username}</h6> */}
+            </span>
+            <img style={{borderRadius: '15px', width:'90%'}} src={post.pic} alt="car" />
+            <h5 style={{fontFamily:'Georgia'}}>{post.content}</h5>
     
             {/* Add a conditional check before mapping over items */}
             {post.items && post.items.length > 0 ? (
                 <div>
-                    <ul>
+                  <h1>Mod List</h1>
+                    <ul style={itemListStyle}>
                         {post.items.map((item, index) => (
                         <li key={index}>
                             <strong>{item.name}</strong> - ${item.price.toFixed(2)}
@@ -69,7 +83,7 @@ function Post(){
             ) : (
               <p>No items available.</p>
             )}
-          </Row>
+          
         </Container>
       );
 }
