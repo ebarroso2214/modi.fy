@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/modi.fyi/static/css/main.40f9f29a.css",
+    "main.js": "/modi.fyi/static/js/main.1f293327.js",
+    "static/media/02wrx.jpeg": "/modi.fyi/static/media/02wrx.548f86843e5ce0880afc.jpeg",
+    "index.html": "/modi.fyi/index.html",
+    "main.40f9f29a.css.map": "/modi.fyi/static/css/main.40f9f29a.css.map",
+    "main.1f293327.js.map": "/modi.fyi/static/js/main.1f293327.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40f9f29a.css",
+    "static/js/main.1f293327.js"
+  ]
+}
