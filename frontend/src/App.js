@@ -31,7 +31,7 @@ function App() {
   //Fetching all posts
   useEffect(()=>{
     async function getPosts(){
-      const response = await fetch('http://https://modifyi.onrender.com/posts')
+      const response = await fetch('https://modifyi.onrender.com/posts')
       const data = await response.json()
       setPosts(data.posts)
       setUsers(data.users)
