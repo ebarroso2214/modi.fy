@@ -157,8 +157,9 @@ function CreatePost({ addPost }) {
               onKeyDown={handleKeyDown}
             />
           </Form.Group>
-          <p style={{fontWeight:500}}>Add/Save Item</p>
           <MdNoteAdd className='clickable-icon' onClick={handleAddItem} />
+          <p style={{fontWeight:500}}>Add/Save Item</p>
+
           
           
 
