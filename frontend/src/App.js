@@ -31,7 +31,7 @@ function App() {
   //Fetching all posts
   useEffect(()=>{
     async function getPosts(){
-      const response = await fetch('http://localhost:3001/posts')
+      const response = await fetch('http://https://modifyi.onrender.com/posts')
       const data = await response.json()
       setPosts(data.posts)
       setUsers(data.users)
@@ -44,7 +44,7 @@ function App() {
 
 
   const addPost = async (newPost) =>  {
-    const response = await fetch('http://localhost:3001/posts',{
+    const response = await fetch('http://https://modifyi.onrender.com/posts',{
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function App() {
   }
 
   const deletePost = async (id) => {
-    const response = await fetch(`http://localhost:3001/posts/${id}`, {
+    const response = await fetch(`http://https://modifyi.onrender.com/posts/${id}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',

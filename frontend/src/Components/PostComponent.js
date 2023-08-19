@@ -28,23 +28,13 @@ function PostComponent ( {post}){
             <Card style={cardStyling}>
                 <Card.Body>
                 <Card.Text>
-                    {post.title}
-                    <p>Post By: {post.author.username}</p>
+                    <h6>{post.title}</h6>
+                    <h6>Post By: {post.author.username}</h6>
                 </Card.Text>
                 </Card.Body>
                 <Link to={`/posts/${post._id}`}><Card.Img style={imageStyling} variant="bottom" src={post.pic} /></Link>
             </Card>
             <br></br>
-
-            {/* <br></br>
-            <Row className="d-flex my-0 p-0">
-                <Col xs={2}style={feedStyling1}>Post by: {post.author.username} </Col>
-                <Col xs={8}>{post.title}</Col>
-                
-            </Row>
-            <Link to={`/posts/${post._id}`}><img style ={imageStyling} src={post.pic} alt="car"/></Link> */}
-            
-
         </Container>
         
     )

@@ -21,8 +21,9 @@ function Post(){
     useEffect(() => {
         async function getPost() {
           try {
-            const response = await fetch(`http://localhost:3001/posts/${id}`);
+            const response = await fetch(`http://https://modifyi.onrender.com/posts/${id}`);
             const data = await response.json();
+            
             setPost(data.post);
 
             const total = data.post.items.reduce((accumulator, item) => {
@@ -57,14 +58,16 @@ function Post(){
             </Link>
           </div>
           
-
+          <div>
             <h1 className='title'>{post.title}</h1>
             <span>
               <h6 style={{fontFamily:'Georgia'}}>Posted:{formattedDate}</h6> 
-              {/* <h6 style={{fontFamily:'Georgia'}}>Written by: {post.author.username}</h6> */}
+
             </span>
+
             <img style={{borderRadius: '15px', width:'90%'}} src={post.pic} alt="car" />
             <h5 style={{fontFamily:'Georgia'}}>{post.content}</h5>
+          </div>
     
             {/* Add a conditional check before mapping over items */}
             {post.items && post.items.length > 0 ? (
