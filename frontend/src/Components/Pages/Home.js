@@ -16,7 +16,7 @@ function Home(){
     return(
         <>
             <Container>
-                <h1 className="display-5 mb-4"> Welcome to Modi.fy!</h1>
+                <h1 className="display-5 mb-4"> Welcome to Modi.FYI!</h1>
                 <Row className="justify-content-center g-4 mx-2 mb-5 p-0" xs={12} md={4} xl={3}>
                     <Image src={image1}/>
                 </Row>
