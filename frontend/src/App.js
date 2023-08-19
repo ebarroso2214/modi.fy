@@ -61,7 +61,7 @@ function App() {
   }
 
   const deletePost = async (id) => {
-    const response = await fetch(`http://https://modifyi.onrender.com/posts/${id}`, {
+    const response = await fetch(`https://modifyi.onrender.com/posts/${id}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',

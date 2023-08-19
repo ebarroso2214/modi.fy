@@ -32,7 +32,7 @@ function Profile (){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`http://localhost:3001/users/${user._id}`, {
+        const response = await fetch(`https://modifyi.onrender.com/${user._id}`, {
             method: 'PUT',
             headers: {
                 'Accept':'application/json',
