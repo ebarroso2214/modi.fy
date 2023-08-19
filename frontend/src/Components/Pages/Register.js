@@ -32,7 +32,7 @@ function Register(){
     const handleSubmit = async (e) => {
         e.preventDefault()
  
-        const response = await fetch('http://https://modifyi.onrender.com/users', {
+        const response = await fetch('https://modifyi.onrender.com/users', {
         method: "POST",
         headers: {
             'Accept':'application/json',

@@ -21,7 +21,7 @@ function Post(){
     useEffect(() => {
         async function getPost() {
           try {
-            const response = await fetch(`http://https://modifyi.onrender.com/posts/${id}`);
+            const response = await fetch(`https://modifyi.onrender.com/posts/${id}`);
             const data = await response.json();
             
             setPost(data.post);

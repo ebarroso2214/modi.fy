@@ -58,7 +58,7 @@ function Profile (){
     }
 
     const deleteProfile = async () => {
-        const response = await fetch(`http://https://modifyi.onrender.com/users/${user._id}`, {
+        const response = await fetch(`https://modifyi.onrender.com/users/${user._id}`, {
             method: 'delete',
             headers:{
                 'Content-Type': 'application/json',
