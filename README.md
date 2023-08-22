@@ -35,3 +35,8 @@ Some of the Methods and Paths are not incorporated with the front end features y
 ### **NOTE**
 
 While this may be the production version, this is nowhere near finished and will be updated in the future to be able to provide better features and a more enhanced UI and UX. 
+
+## Link to page
+While this may be on GitHub pages for now, the plan is to migrate it over to AWS.
+
+https://ebarroso2214.github.io/modi.fyi/
