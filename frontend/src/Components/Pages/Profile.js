@@ -114,9 +114,11 @@ function Profile (){
                 {user.pic &&
                 <Col className='d-flex align-items-center p-5'>
                     <Image fluid className='shadow m-auto' src={user.pic} alt={user.username} />
+                    
                 </Col>
                 }
             </Row>
+
             <Modal
                 show={showModal}
                 onHide={() => setShowModal(false)}
