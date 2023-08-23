@@ -20,7 +20,7 @@ function Login(){
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await fetch(`http://localhost:3001/users/login`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}users/login`, {
         method: "POST",
         headers: {
             'Accept':'application/json',
@@ -32,6 +32,7 @@ function Login(){
             })
         })
         const data = await response.json()
+        console.log(data)
         if(data.user){
             const {password, ...rest} = data.user
             setUser(rest)

@@ -21,7 +21,7 @@ function Post(){
     useEffect(() => {
         async function getPost() {
           try {
-            const response = await fetch(`http://localhost:3001/posts/${id}`);
+            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}posts/${id}`);
             const data = await response.json();
             setPost(data.post);
 

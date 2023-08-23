@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express()
 const cors = require('cors')
-
+const path = require('path')
 
 //Note to self, add CORS.
 
@@ -21,6 +21,10 @@ app.use(function(req, res, next){
     res.header("Access-Control-Allow-Headers", "Origin, x-access-token, X-Requested-With, Content-Type, Accept, Authorization");
     next();
 })
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, 'client','build')))
+}
 //Controllers
 app.use('/users', require('./controllers/user'))
 app.use('/posts', require('./controllers/post'))
