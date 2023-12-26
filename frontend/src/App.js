@@ -83,7 +83,7 @@ function App() {
           <NavigationBar/>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/feed" element={<Feed posts={posts}/>}/>
+            <Route path="/posts" element={<Feed posts={posts}/>}/>
             <Route path= "/posts/:id" element={<Post user={user._id} deletePost={deletePost}/>}/>
             {/* <Route path="/posts/:id/edit" element = {<EditPost />}/> */}
             <Route path= "/post" element={<CreatePost addPost={addPost}/>}/>

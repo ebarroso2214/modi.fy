@@ -52,7 +52,7 @@ function Post(){
     return (
         <Container className='mb-5'>
           <div style={{position:'relative'}}>
-            <Link to="/feed">
+            <Link to="/posts">
               <BackButton />
             </Link>
           </div>
